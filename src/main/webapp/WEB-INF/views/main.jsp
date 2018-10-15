@@ -9,6 +9,7 @@
     <link href="${context}/resources/css/sein.css" rel="stylesheet">
     <link href="${context}/resources/css/heetae.css" rel="stylesheet">
     <link href="${context}/resources/css/taehyeong.css" rel="stylesheet">
+    <link href="${context}/resources/css/sanghoon.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/flexslider.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
