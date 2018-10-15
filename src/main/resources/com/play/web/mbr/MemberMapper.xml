@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.play.web.mbr.MemberMapper">
+  <!-- <resultMap type="com.play.web.mbr.Member" id="mbr">
+  	  <id property="userid" column="USERID"></id>
+	  <result property="teamid" column="TEAMID"/>
+	  <result property="name" column="NAME"/>
+	  <result property="ssn" column="SSN"/>
+	  <result property="roll" column="ROLL"/>
+	  <result property="password" column="PASSWORD"/>
+	  <result property="age" column="AGE"/>
+	  <result property="gender" column="GENDER"/>
+	  <result property="phone" column="PHONE"/>
+	  <result property="email" column="EMAIL"/>
+  </resultMap> -->
+  <select id="get" resultType="com.play.web.mbr.Member">
+    SELECT USERID, PASSWORD, NAME, SSN, AGE, GENDER, TEAMID, ROLL, PHONE, EMAIL
+    FROM member
+    <where>
+    	<if test=" userid != null and userid != '' ">
+    		USERID LIKE #{userid}
+    	</if>
+    	<if test=" password != null and password != '' ">
+    		AND PASSWORD LIKE #{password}
+    	</if>
+    </where>
+  </select>
+  <insert id="post" >
+    INSERT INTO member
+    (USERID, PASSWORD, NAME, SSN, AGE, GENDER, TEAMID, ROLL, SUBJECT, EMAIL, PHONE)
+    VALUES (#{userid}, #{password}, #{name}, #{ssn}, #{age}, #{gender}, #{teamid}, #{roll}, #{subject}, #{email}, #{phone})
+  </insert>
+  <select id="list" resultType="com.play.web.mbr.Member">
+    SELECT USERID, NAME, SSN, AGE, GENDER, TEAMID, ROLL, PHONE, EMAIL 
+    FROM member
+  </select>
+  <select id="count" resultType="int">
+  	SELECT COUNT(*) FROM MEMBER
+  	<where>
+	  	<if test=" userid != null and userid != '' ">
+	  		USERID LIKE #{userid}
+	  	</if>
+  	</where>
+  </select>
+  <update id="update" parameterType="com.play.web.mbr.Member">
+	  UPDATE member SET
+	    PASSWORD = #{password},
+	    TEAMID = #{teamid},
+	    ROLL = #{roll},
+	    PHONE = #{phone},
+	    EMAIL = #{email}
+	  WHERE USERID = #{userid}
+  </update>
+  <delete id="delete" parameterType="com.play.web.mbr.Member">
+	  DELETE FROM member
+	  WHERE USERID = #{userid}
+	  AND PASSWORD = #{password}
+  </delete>
+</mapper>
