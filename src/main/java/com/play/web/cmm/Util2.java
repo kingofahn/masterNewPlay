@@ -9,9 +9,9 @@ import com.play.web.mbr.Member;
 public class Util2 {
 	public Member ageAndGender(Member mbr) {
 		Function<Member,Member> f = m->{
-		String age =String.valueOf(Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()))-(Integer.parseInt(mbr.getSsn().substring(0, 2))+1900-1));
+		String age =String.valueOf(Integer.parseInt(new SimpleDateFormat("yyyy").format(new Date()))-(Integer.parseInt(mbr.getBirthdate().substring(0, 2))+1900-1));
 		String gender ="";
-		switch (m.getSsn().split("-")[1]) {
+		switch (m.getBirthdate().split("-")[1]) {
 			case "1":case "3":
 				gender = "남";
 				break;

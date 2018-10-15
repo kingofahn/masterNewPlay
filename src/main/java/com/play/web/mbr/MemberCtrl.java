@@ -47,7 +47,7 @@ public class MemberCtrl {
 	public String remove(@ModelAttribute Member param,
 			@ModelAttribute("user") Member user){
 		logger.info("\n--------- MemberController {} !!-----","remove()");
-		param.setUserid(user.getUserid());
+		param.setMember_id((user.getMember_id()));
 		mbrMap.delete(param);
 		return "redirect:/";
 	}
