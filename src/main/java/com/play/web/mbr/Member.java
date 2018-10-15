@@ -8,5 +8,5 @@ import lombok.Data;
 @Component
 @Data @Lazy
 public class Member {
-	private String userid, password, name, ssn, age, gender, teamid, roll, subject, email, phone;
+	private String member_id, name, password, birthdate, joindate, gender, age, phone, customer_grade, point, nickname, address, zipcode;
 }

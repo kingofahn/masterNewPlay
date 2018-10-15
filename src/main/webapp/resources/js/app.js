@@ -28,7 +28,7 @@ app.permision = (()=>{
 				$('<div/>').addClass('loginBox').appendTo('#content');
 					$('<div/>').addClass('loginHead').html('로그인하고, 혜택받으세요!').appendTo('.loginBox');
 					$('<div/>').addClass('inputBox').appendTo('.loginBox');
-						$('<input/>').attr({type:'text', id:'member_id', placeholder:'이메일 또는 아이디'}).addClass('inputData').appendTo('.inputBox');
+						$('<input/>').attr({type:'text', id:'member_id', placeholder:'아이디'}).addClass('inputData').appendTo('.inputBox');
 						$('<input/>').attr({type:'text', id:'password', placeholder:'비밀번호'}).addClass('inputData').appendTo('.inputBox');
 						$('<div/>').addClass('hjButton').text('로그인').attr({id:'loginButton'}).appendTo('.inputBox')
 						.click(e=>{
@@ -46,10 +46,8 @@ app.permision = (()=>{
 								}else{
 									$.cookie("loginID",d.MBR.userid);
 									$.getScript($.script()+'/header.js',()=>{
-										/*$('#content').html(headerUI());*/	
 									});
 									$.getScript($.script()+'/content.js',()=>{
-										/*$('#content').append(contentUI());*/	
 									});
 									$('#logo_btn').click(e=>{
 										e.preventDefault();
@@ -90,53 +88,44 @@ app.permision = (()=>{
 		})
 	}
 	var join =()=>{
-		$('#header').remove();
+		$('#header').empty();
+		$('#content').empty();
 		$.getScript($.script()+'/compo.js',()=>{
-			$.getScript($.script()+'/join.js',()=>{
-				/*$('#content').html(joinUI());*/
-				$('#join_form_textbox');
-				/*$('[name="subject"]')
-				.change(function(){
-					alert($(this).val());
-				}); 변화되는 부분값만 가지고오는 소스 */ 
-				ui.anchor({id:'join_form_btn',txt:'가입하기'})
-				.addClass('btn btn-danger btn-lg')
-				.appendTo($('#join_form_otherbox'))
-				.click(e=>{
-					e.preventDefault();
-					var arr=[];
-					var a='';
-					let i='';
-					for(i of $("[name=subject]")){
-						if(i.checked){
-							alert('선택된 과목'+i.value);
-							arr.push(i.value);
-							a+=i.value+','
-						}
-					}
-					$.ajax({
-						url:$.ctx()+'/member/join',
-						method:'post',
-						contentType:'application/json',
-						data:JSON.stringify({userid:$('#userid').val(),
-							password:$('#password').val(),
-							name:$('#name').val(),
-							ssn:$('#ssn').val(),
-							email:$('#email').val(),
-							phone:$('#phone').val(),
-							teamid:$('[name=teamid]:checked').val(),
-							roll:$('#roll').val(),
-							subject:a
-							}),
-						success:d=>{
-							login();
-						},
-						error:(m1,m2,m3)=>{alert(m3);}
-					});
+			$('<div/>').addClass('joinBox').appendTo('#content');
+				$('<div/>').addClass('loginHead').html('회원가입').appendTo('.joinBox');
+				$('<div/>').addClass('inputBox').appendTo('.joinBox');
+				$('<input/>').attr({type:'text', id:'member_id', placeholder:'아이디'}).addClass('inputData').appendTo('.inputBox');
+				$('<input/>').attr({type:'text', id:'name', placeholder:'성명(이름)'}).addClass('inputData').appendTo('.inputBox');
+				$('<input/>').attr({type:'text', id:'nickname', placeholder:'닉네임'}).addClass('inputData').appendTo('.inputBox');
+				$('<input/>').attr({type:'text', id:'password', placeholder:'비밀번호'}).addClass('inputData').appendTo('.inputBox');
+				$('<input/>').attr({type:'text', id:'birthdate', placeholder:'생년원일(ex 890505-1)'}).addClass('inputData').appendTo('.inputBox');
+				$('<input/>').attr({type:'text', id:'phone', placeholder:'휴대폰 번호(ex 010-9000-5000)'}).addClass('inputData').appendTo('.inputBox');
+				$('<input/>').attr({type:'text', id:'address', placeholder:'주소'}).addClass('inputData').appendTo('.inputBox');
+				$('<input/>').attr({type:'text', id:'zipcode', placeholder:'우편번호'}).addClass('inputData').appendTo('.inputBox');
+				$('<div/>').addClass('hjButton').text('가입하기').attr({id:'joinButton'}).appendTo('.inputBox')
+					.click(e=>{
+						e.preventDefault();
+						$.ajax({
+							url:$.ctx()+'/member/join',
+							method:'post',
+							contentType:'application/json',
+							data:JSON.stringify({
+								member_id:$('#member_id').val(),
+								name:$('#name').val(),
+								nickname:$('#nickname').val(),
+								password:$('#password').val(),
+								birthdate:$('#birthdate').val(),
+								phone:$('#phone').val(),
+								address:$('#address').val(),
+								zipcode:$('#zipcode').val(),
+								}),
+							success:d=>{
+								login();
+							},
+							error:(m1,m2,m3)=>{alert(m3);}
+						});
 				})
-			})
-		})
-		
+			});			
 	}
 	return {login : login, join : join}
 })();
