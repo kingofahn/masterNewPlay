@@ -26,12 +26,11 @@ app.permision = (()=>{
 		$('#content').empty();
 		$.getScript($.script()+'/compo.js',()=>{
 				$('<div/>').addClass('loginBox').appendTo('#content');
-					$('<div/>').attr({id:'loginHead'}).html('로그인하고, 혜택받으세요!').appendTo('.loginBox');
-					$('<div/>').attr({id:'loginInputBox'}).appendTo('.loginBox');
-						$('<input/>').attr({type:'text', id:'member_id', placeholder:'이메일 또는 아이디'}).appendTo('#loginInputBox');
-						$('<input/>').attr({type:'text', id:'password', placeholder:'비밀번호'}).appendTo('#loginInputBox');
-					$('<div/>').attr({id:'loginButton'}).appendTo('.loginBox');	 	
-						$('<a/>').attr({txt:'로그인'}).addClass('btn btn-danger btn-lg').appendTo('#loginButton')
+					$('<div/>').addClass('loginHead').html('로그인하고, 혜택받으세요!').appendTo('.loginBox');
+					$('<div/>').addClass('inputBox').appendTo('.loginBox');
+						$('<input/>').attr({type:'text', id:'member_id', placeholder:'이메일 또는 아이디'}).addClass('inputData').appendTo('.inputBox');
+						$('<input/>').attr({type:'text', id:'password', placeholder:'비밀번호'}).addClass('inputData').appendTo('.inputBox');
+						$('<div/>').addClass('hjButton').text('로그인').attr({id:'loginButton'}).appendTo('.inputBox')
 						.click(e=>{
 							$.ajax({
 							url:$.ctx()+'/member/login',
@@ -173,8 +172,8 @@ app.router = {
 		
 		/*header 시작*/
 		$('<header/>').attr({id:'header'}).appendTo('#wrapper');
-		$('<div/>').attr({id:'mainheader'}).appendTo('#header');
-		$('<img/>').attr({src:$.img()+"/banner/banner.main2.JPG", id:'mainBanner'}).appendTo('#mainheader');
+		$('<div/>').attr({id:'mainheader'}).appendTo('#header');		
+		$('<img/>').attr({src:$.img()+"/banner/banner_main2.jpg", id:'mainBanner'}).appendTo('#mainheader');
 		$('<div/>').addClass('centered-left1').html('야놀자와 함께').appendTo('#mainheader');
 		$('<div/>').addClass('centered-left2').html('여행을 떠나볼까요?').appendTo('#mainheader');
 		$('<div/>').addClass('centered-left3').attr({id:'mainInput'}).appendTo('#mainheader');
