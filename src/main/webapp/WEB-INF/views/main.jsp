@@ -6,7 +6,6 @@
 	<link rel="shortcut icon" href="${context}/resources/img/favicon.ico" />
     <link href="${context}/resources/css/sein.css" rel="stylesheet">
     <link href="${context}/resources/css/hyungjun.css" rel="stylesheet">
-    <link href="${context}/resources/css/sein.css" rel="stylesheet">
     <link href="${context}/resources/css/heetae.css" rel="stylesheet">
     <link href="${context}/resources/css/taehyeong.css" rel="stylesheet">
     <link href="${context}/resources/css/sanghoon.css" rel="stylesheet">
